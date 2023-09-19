@@ -1,22 +1,51 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" name="formLogin">
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" id="username" formControlName="username" autocomplete="username" class="form-control">
-      <div *ngIf="loginForm.get('username')?.hasError('required') && loginForm.get('username')?.touched">
-        Username is required.
-      </div>
-      <div *ngIf="loginForm.get('username')?.hasError('email') && loginForm.get('username')?.touched">
-        Invalid email format.
+<div class="container-form">
+  <h1 class="tittle">Inicio de sesión</h1>
+  <form
+    class="form"
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+    name="formLogin"
+  >
+    <div class="username">
+      <input
+        type="text"
+        id="username"
+        formControlName="username"
+        autocomplete="username"
+        placeholder="Usuario"
+      />
+      <div
+        class="error"
+        *ngIf="
+          loginForm.get('username')?.hasError('required') &&
+          loginForm.get('username')?.touched
+        "
+      >
+        Usuario requerido.
       </div>
     </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" formControlName="password" autocomplete="new-password" class="form-control">
-      <div *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
-        Password is required.
+    <div class="username">
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        autocomplete="new-password"
+        placeholder="Contraseña"
+      />
+      <div
+        class="error"
+        *ngIf="
+          loginForm.get('password')?.hasError('required') &&
+          loginForm.get('password')?.touched
+        "
+      >
+        Contraseña requerida.
       </div>
     </div>
-    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Submit</button>
+    <div class="button-container">
+      <button type="submit" [disabled]="loginForm.invalid" class="btn-primary">
+        Iniciar
+      </button>
+    </div>
   </form>
-  
-
+</div>

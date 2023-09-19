@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -38,6 +39,11 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/admin']);
         },
         (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Usuario o contraseña incorrectas',
+            text: 'Intentalo nuevamente',
+          });
           console.error('Error de autenticación', error);
         }
       );
